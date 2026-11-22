@@ -87,13 +87,13 @@ if (bigA === "") {
 console.log("A5 관객 100만 이상: " + bigA);
 
 
-//평균 평점
+// 입력: 영화 배열 → 출력: 평균 평점
 function average(list) {
     return averageBy(list, "rating");
 }
 
 
-//최고 평점 영화
+// 입력: 영화 배열 → 출력: 최고 평점 영화
 function best(list) {
     let max = 0;
 
@@ -107,13 +107,13 @@ function best(list) {
 }
 
 
-//조건에 맞는 영화 배열
+// 입력: 영화 배열, 최소 평점 → 출력: 조건에 맞는 영화 배열
 function filterByRating(list, min) {
     return list.filter(m => m.rating >= min);
 }
 
 
-//정렬된 새 배열
+// 입력: 영화 배열, 정렬 기준, 정렬 방향 → 출력: 정렬된 새 배열
 function sortBy(list, key, desc) {
     const sign = desc ? -1 : 1;
 
@@ -127,7 +127,7 @@ function sortBy(list, key, desc) {
 }
 
 
-//검색된 영화 배열
+// 입력: 영화 배열, 검색어 → 출력: 검색된 영화 배열
 function search(list, keyword) {
     const word = keyword.trim().toLowerCase();
 
@@ -137,13 +137,13 @@ function search(list, keyword) {
 }
 
 
-//천 단위 콤마가 표시된 문자열
+// 입력: 숫자 → 출력: 천 단위 콤마가 표시된 문자열
 function formatNumber(number) {
     return Number(number).toLocaleString("ko-KR");
 }
 
 
-//개봉 후 지난 연수
+// 입력: 개봉일 문자열 → 출력: 개봉 후 지난 연수
 function yearsSince(dateString) {
     const year = new Date(dateString).getFullYear();
     const currentYear = new Date().getFullYear();
@@ -152,13 +152,13 @@ function yearsSince(dateString) {
 }
 
 
-//영화 배열
+// 입력: TMDB 응답 객체 → 출력: 영화 배열
 function getList(data) {
     return data.results;
 }
 
 
-//해당 값의 평균
+// 입력: 객체 배열, 계산할 키 → 출력: 해당 값의 평균
 function averageBy(list, key) {
     let sum = 0;
 
