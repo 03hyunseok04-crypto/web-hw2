@@ -1,6 +1,6 @@
 # 실습과제 #2 : 영화 데이터를 자바스크립트로
 - 이름 / 학번 : 이현석 / 2651055
-- 사이트 주소 : https://03hyunseok04-crypto.github.io/web-hw2/
+- 사이트 주소 : https://github.com/03hyunseok04-crypto/web-hw2
 - 사용한 API : TMDB (영화 정보, now_playing 응답), KOBIS 일별 박스오피스 (기준일 2026-10-26)
 ## 구현 항목 체크
 - [ ] (요구사항 1~6의 번호와 제목을 그대로 옮겨 적고 체크, 보너스는 이름과 캡처 파일명)
