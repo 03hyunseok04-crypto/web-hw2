@@ -1,3 +1,5 @@
+
+// A1 평균 평점 계산
 let sumA = 0;
 
 for (let i = 0; i < ratings.length; i++) {
@@ -9,6 +11,7 @@ let averageA = sumA / ratings.length;
 console.log("A1 평균 평점: " + averageA);
 
 
+// A2 최고 평점 영화 찾기
 let maxA = 0;
 
 for (let i = 1; i < ratings.length; i++) {
@@ -22,6 +25,7 @@ console.log(
 );
 
 
+// A3 8점 이상 영화 개수
 let countA = 0;
 
 for (let i = 0; i < ratings.length; i++) {
@@ -33,13 +37,13 @@ for (let i = 0; i < ratings.length; i++) {
 console.log("A3 8점 이상: " + countA + "편");
 
 
+// A4 개봉 연도별 영화 개수
 let count2020A = 0;
 let count2010A = 0;
 let count2000A = 0;
 let countBeforeA = 0;
 
 for (let i = 0; i < years.length; i++) {
-
     const year = parseInt(years[i]);
     const decade = year - (year % 10);
 
@@ -47,15 +51,12 @@ for (let i = 0; i < years.length; i++) {
         case 2020:
             count2020A++;
             break;
-
         case 2010:
             count2010A++;
             break;
-
         case 2000:
             count2000A++;
             break;
-
         default:
             countBeforeA++;
             break;
@@ -70,6 +71,7 @@ console.log(
 );
 
 
+// A5 관객 100만 이상 영화 찾기
 let bigA = "";
 
 for (let i = 0; i < audiences.length; i++) {
@@ -85,88 +87,79 @@ if (bigA === "") {
 console.log("A5 관객 100만 이상: " + bigA);
 
 
+//평균 평점
 function average(list) {
     return averageBy(list, "rating");
 }
 
 
+//최고 평점 영화
 function best(list) {
-
     let max = 0;
 
     for (let i = 1; i < list.length; i++) {
-
         if (list[i].rating > list[max].rating) {
             max = i;
         }
-
     }
 
     return list[max];
 }
 
 
+//조건에 맞는 영화 배열
 function filterByRating(list, min) {
-
     return list.filter(m => m.rating >= min);
-
 }
 
 
+//정렬된 새 배열
 function sortBy(list, key, desc) {
-
     const sign = desc ? -1 : 1;
 
     return [...list].sort((a, b) => {
-
         if (typeof a[key] === "string") {
             return sign * a[key].localeCompare(b[key]);
         } else {
             return sign * (a[key] - b[key]);
         }
-
     });
-
 }
 
 
+//검색된 영화 배열
 function search(list, keyword) {
-
     const word = keyword.trim().toLowerCase();
 
     return list.filter(m =>
         m.title.toLowerCase().includes(word)
     );
-
 }
 
+
+//천 단위 콤마가 표시된 문자열
 function formatNumber(number) {
-
     return Number(number).toLocaleString("ko-KR");
-
 }
 
 
+//개봉 후 지난 연수
 function yearsSince(dateString) {
-
     const year = new Date(dateString).getFullYear();
     const currentYear = new Date().getFullYear();
 
     return currentYear - year;
-
 }
 
 
-
+//영화 배열
 function getList(data) {
-
     return data.results;
-
 }
 
 
+//해당 값의 평균
 function averageBy(list, key) {
-
     let sum = 0;
 
     for (let i = 0; i < list.length; i++) {
@@ -174,12 +167,11 @@ function averageBy(list, key) {
     }
 
     return sum / list.length;
-
 }
 
 
+// Part B 요약 출력
 const bestMovie = best(movies);
-
 const topMovie = sortBy(movies, "audience", true)[0];
 
 document.getElementById("out").textContent =
@@ -198,7 +190,7 @@ document.getElementById("out").textContent =
 const nowPlaying = getList(TMDB);
 
 
-// C1
+// C1 페이지 정보
 console.log(
     "C1 페이지: " + TMDB.page +
     ", 전체 페이지: " + TMDB.total_pages +
@@ -207,21 +199,21 @@ console.log(
 );
 
 
-// C2
+// C2 상영작 평균 평점
 console.log(
     "C2 상영작 평균 평점: " +
     averageBy(nowPlaying, "vote_average").toFixed(1)
 );
 
 
-// C3
+// C3 평점 상위 5편
 console.table(
     sortBy(nowPlaying, "vote_average", true).slice(0, 5),
     ["title", "release_date", "vote_average"]
 );
 
 
-// C4
+// C4 영화 검색 결과
 console.log(
     "C4 검색 결과: " +
     search(nowPlaying, "Heart of the Beast").length +
